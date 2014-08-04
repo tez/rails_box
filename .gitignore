@@ -6,10 +6,8 @@
 
 # Cheffile
 .cookbooks/
-Cheffile.lock
 
 # Berksfile
-Berksfile.lock
 
 # Bundler/Rubygems
 *.gem
