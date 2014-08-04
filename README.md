@@ -80,4 +80,3 @@ Port 3000 in the host computer is forwarded to port 3000 in the virtual machine.
 
 Released under the MIT License, Copyright (c) 2014 tez.
 
-Contributing
