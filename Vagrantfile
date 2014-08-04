@@ -53,7 +53,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "rails_box::prezto"
     chef.add_recipe "rails_box::git_flow"
     chef.add_recipe "rails_box::tmux"
-    chef,add_recipe "rails_box::gemrc"
+    chef.add_recipe "rails_box::gemrc"
 
     # Install Ruby 2.1.2 and Bundler
     chef.json = {

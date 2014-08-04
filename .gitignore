@@ -8,6 +8,7 @@
 .cookbooks/
 
 # Berksfile
+Berksfile.lock
 
 # Bundler/Rubygems
 *.gem

@@ -8,7 +8,7 @@
 #
 bash "zprezto_install" do
   code <<-EOH
-  git clone --recursive https://github.com/sorin-ionescu/prezto.git /home/vagrant/.zprezto
+    git clone --recursive https://github.com/sorin-ionescu/prezto.git /home/vagrant/.zprezto
   EOH
   user 'vagrant'
   group 'vagrant'
