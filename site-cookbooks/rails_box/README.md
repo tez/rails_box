@@ -1,9 +1,6 @@
 rails_box Cookbook
 ==================
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+This cookbook makes your rails application development environment.
 
 Requirements
 ------------
@@ -56,12 +53,14 @@ Contributing
 TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
 
 e.g.
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write your change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
+1. Clone the repository on Github
+2. $ berks vendor cookbooks
+3. $ vagrant up --provision
+4. $ mv APPNAME project
+5. $ cd project
+8. $ bundle install --path .bundle --binstubs .bundle/bin
+7. $ rails new . --skip-test-unit
+9. $ rails new .
 
 License and Authors
 -------------------

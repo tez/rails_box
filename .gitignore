@@ -5,7 +5,7 @@
 .vagrant/
 
 # Cheffile
-.cookbooks/
+cookbooks/
 
 # Berksfile
 Berksfile.lock
