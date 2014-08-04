@@ -40,7 +40,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "nginx"
     chef.add_recipe "imagemagick"
     chef.add_recipe "vim"
-    chef.add_recipe 'imagemagick'
 
     chef.add_recipe "rails_box::ops_user"
     chef.add_recipe "rails_box::keys"
