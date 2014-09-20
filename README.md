@@ -28,8 +28,8 @@ Building the virtual machine is this easy:
     host $ mv APPNAME PROJECT
     host $ cd PROJECT
     host $ bundle install --path .bundle
-    host $ rails new . --skip-test-unit
-
+    host $ bundle exec rails new . --skip-test-unit
+x
 That's it.
 
 (If you want to use VMWare Fusion instead of VirtualBox, write `vagrant up --provider=vmware_fusion` instead of `vagrant up` when building the VM for the first time. After that, Vagrant will remember your provider choice, and you won't need to include the `provider` flag again.)
