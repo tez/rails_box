@@ -21,7 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # Forward the Rails server default port to the host
-  config.vm.network :forwarded_port, guest: 3000, host: 3000
+  # config.vm.network :forwarded_port, guest: 3000, host: 3000
 
   config.omnibus.chef_version = :latest
 
@@ -53,14 +53,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "rails_box::git_flow"
     chef.add_recipe "rails_box::tmux"
     chef.add_recipe "rails_box::gemrc"
+    chef.add_recipe "rails_box::pryrc"
 
-    # Install Ruby 2.1.2 and Bundler
+    # Install Ruby 2.1.3 and Bundler
     chef.json = {
       rbenv: {
-        global: "2.1.2",
-        rubies: ["2.1.2"],
+        global: "2.1.3",
+        rubies: ["2.1.3"],
         gems: {
-          "2.1.2" => [
+          "2.1.3" => [
             { name: "bundler" }
           ]
         }
