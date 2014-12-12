@@ -1,5 +1,5 @@
 # Cookbook Name:: rails_box
-# Recipe:: ops_user
+# Recipe:: tmux
 #
 # Copyright 2014, tez
 #

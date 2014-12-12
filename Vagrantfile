@@ -10,14 +10,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "parallels/ubuntu-14.04"
-  #config.vm.box = "ubuntu/trusty64"
+  #config.vm.box = "parallels/ubuntu-14.04"
+  config.vm.box = "chef/ubuntu-14.04"
 
   # Configurate the virtual machine to use 2GB of RAM
-  config.vm.provider "parallels" do |v|
-  #config.vm.provider "virtualbox" do |v|
-    v.memory = 2048
-    v.cpus = 2
+  # config.vm.provider "parallels" do |v|
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 512
+    v.cpus = 1    
   end
 
   # Forward the Rails server default port to the host
@@ -40,6 +40,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "nginx"
     chef.add_recipe "imagemagick"
     chef.add_recipe "vim"
+    
+    chef.add_recipe "rails_box::autoconf"
+    chef.add_recipe "rails_box::bison"
+    chef.add_recipe "rails_box::libssl-dev"
+    chef.add_recipe "rails_box::libyaml-dev"
+    chef.add_recipe "rails_box::libreadline6-dev"
+    chef.add_recipe "rails_box::zlib1g-dev"
+    chef.add_recipe "rails_box::libncurses5-dev"
 
     chef.add_recipe "rails_box::ops_user"
     chef.add_recipe "rails_box::keys"
@@ -55,16 +63,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "rails_box::gemrc"
     chef.add_recipe "rails_box::pryrc"
 
-    # Install Ruby 2.1.3 and Bundler
+    # Install Ruby 2.1.5 and Bundler
     chef.json = {
       rbenv: {
-        global: "2.1.3",
-        rubies: ["2.1.3"],
-        gems: {
-          "2.1.3" => [
-            { name: "bundler" }
-          ]
-        }
+        "system_install" => [
+          global: "2.1.5",
+          rubies: ["2.1.5"],
+          gems: {
+            "2.1.5" => [
+              { name: "bundler" }
+            ]
+          }
+        ]
       }
     }
   end
