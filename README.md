@@ -25,11 +25,14 @@ Building the virtual machine is this easy:
     host $ git clone git@github.com:tez/rails_box.git PROJECT
     host $ berks vendor cookbooks
     host $ vagrant up --provision
-    host $ mv APPNAME PROJECT
-    host $ cd PROJECT
-    host $ bundle install --path .bundle
-    host $ bundle exec rails new . --skip-test-unit
-x
+    host $ vagrant ssh
+    guest $ cd /vagrant
+    guest $ mv APPNAME PROJECT
+    guest $ cd PROJECT
+    
+    guest $ bundle install --path .bundle
+    guest $ bundle exec rails new . --skip-test-unit
+
 That's it.
 
 (If you want to use VMWare Fusion instead of VirtualBox, write `vagrant up --provider=vmware_fusion` instead of `vagrant up` when building the VM for the first time. After that, Vagrant will remember your provider choice, and you won't need to include the `provider` flag again.)

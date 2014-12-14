@@ -10,12 +10,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  #config.vm.box = "parallels/ubuntu-14.04"
-  config.vm.box = "chef/ubuntu-14.04"
+  config.vm.box = "parallels/ubuntu-14.04"
+  # config.vm.box = "chef/ubuntu-14.04"
 
-  # Configurate the virtual machine to use 2GB of RAM
-  # config.vm.provider "parallels" do |v|
-  config.vm.provider "virtualbox" do |v|
+  # Configurate the virtual machine to use 512MB of RAM
+  config.vm.provider "parallels" do |v|
+  # config.vm.provider "virtualbox" do |v|
     v.memory = 512
     v.cpus = 1    
   end
@@ -66,15 +66,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Install Ruby 2.1.5 and Bundler
     chef.json = {
       rbenv: {
-        "system_install" => [
-          global: "2.1.5",
-          rubies: ["2.1.5"],
-          gems: {
-            "2.1.5" => [
-              { name: "bundler" }
-            ]
-          }
-        ]
+        global: "2.1.5",
+        rubies: ["2.1.5"],
+        gems: {
+          "2.1.5" => [
+            { name: "bundler" }
+          ]
+        }
       }
     }
   end
