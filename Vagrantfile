@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider "parallels" do |v|
   # config.vm.provider "virtualbox" do |v|
     v.memory = 512
-    v.cpus = 1    
+    v.cpus = 1
   end
 
   # Forward the Rails server default port to the host
@@ -40,7 +40,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "nginx"
     chef.add_recipe "imagemagick"
     chef.add_recipe "vim"
-    
+
+    chef.add_recipe "rails_box::mysql"
     chef.add_recipe "rails_box::autoconf"
     chef.add_recipe "rails_box::bison"
     chef.add_recipe "rails_box::libssl-dev"
@@ -51,7 +52,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     chef.add_recipe "rails_box::ops_user"
     chef.add_recipe "rails_box::keys"
-    chef.add_recipe "rails_box::sqlite3_dev"
+    # chef.add_recipe "rails_box::sqlite3_dev"
     chef.add_recipe "rails_box::nginx_setting"
     chef.add_recipe "rails_box::iptables"
 
@@ -65,12 +66,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Install Ruby 2.1.5 and Bundler
     chef.json = {
+      # mysql: {
+      #   version: '5.6',
+      #   initial_root_password: "password",
+      #   bind_address: "127.0.0.1"
+      # },
       rbenv: {
         global: "2.1.5",
         rubies: ["2.1.5"],
         gems: {
           "2.1.5" => [
-            { name: "bundler" }
+            { name: "bundler" },
           ]
         }
       }

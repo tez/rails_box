@@ -1,10 +1,11 @@
-source "https://api.berkshelf.com"
+source "https://supermarket.chef.io"
 
 cookbook 'build-essential'
 cookbook 'git'
 cookbook 'memcached'
 cookbook 'nodejs'
 cookbook 'database'
+cookbook 'mysql'
 cookbook 'xml'
 cookbook 'ruby_build'
 cookbook 'rbenv', github: 'fnichol/chef-rbenv'
