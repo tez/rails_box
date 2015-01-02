@@ -59,7 +59,7 @@ Port 3000 in the host computer is forwarded to port 3000 in the virtual machine.
 
 * rbenv
 
-* Ruby 2.2.2 (binary rbenv install)
+* Ruby 2.1.5 (binary rbenv install)
 
 * Bundler
 
