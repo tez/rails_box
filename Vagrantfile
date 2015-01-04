@@ -30,6 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.cookbooks_path = ["./cookbooks", "./site-cookbooks"]
 
     chef.add_recipe "build-essential"
+    chef.add_recipe "rails_box::build-environment"
     chef.add_recipe "git"
     chef.add_recipe "memcached"
     chef.add_recipe "nodejs"
@@ -41,18 +42,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "imagemagick"
     chef.add_recipe "vim"
 
-    chef.add_recipe "rails_box::mysql"
-    chef.add_recipe "rails_box::autoconf"
-    chef.add_recipe "rails_box::bison"
-    chef.add_recipe "rails_box::libssl-dev"
-    chef.add_recipe "rails_box::libyaml-dev"
-    chef.add_recipe "rails_box::libreadline6-dev"
-    chef.add_recipe "rails_box::zlib1g-dev"
-    chef.add_recipe "rails_box::libncurses5-dev"
-
     chef.add_recipe "rails_box::ops_user"
     chef.add_recipe "rails_box::keys"
     # chef.add_recipe "rails_box::sqlite3_dev"
+    chef.add_recipe "rails_box::mysql"
     chef.add_recipe "rails_box::nginx_setting"
     chef.add_recipe "rails_box::iptables"
 
@@ -64,18 +57,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "rails_box::gemrc"
     chef.add_recipe "rails_box::pryrc"
 
-    # Install Ruby 2.1.5 and Bundler
+    # Install Ruby 2.2.0 and Bundler
     chef.json = {
-      # mysql: {
-      #   version: '5.6',
-      #   initial_root_password: "password",
-      #   bind_address: "127.0.0.1"
-      # },
       rbenv: {
-        global: "2.1.5",
-        rubies: ["2.1.5"],
+        global: "2.2.0",
+        rubies: ["2.2.0"],
         gems: {
-          "2.1.5" => [
+          "2.2.0" => [
             { name: "bundler" },
           ]
         }
