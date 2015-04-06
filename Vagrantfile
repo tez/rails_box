@@ -28,24 +28,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Use Chef Solo to provision our virtual machine
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ["./cookbooks", "./site-cookbooks"]
-
     chef.add_recipe "build-essential"
     chef.add_recipe "rails_box::build-environment"
     chef.add_recipe "git"
     chef.add_recipe "memcached"
     chef.add_recipe "nodejs"
-    chef.add_recipe "database"
+    # chef.add_recipe "database"
     chef.add_recipe "xml"
     chef.add_recipe "ruby_build"
     chef.add_recipe "rbenv::system"
     chef.add_recipe "nginx"
     chef.add_recipe "imagemagick"
     chef.add_recipe "vim"
+    chef.add_recipe "timezone"
 
     chef.add_recipe "rails_box::ops_user"
     chef.add_recipe "rails_box::keys"
-    # chef.add_recipe "rails_box::sqlite3_dev"
-    chef.add_recipe "rails_box::mysql"
+    chef.add_recipe "rails_box::sqlite3_dev"
+    # chef.add_recipe "rails_box::mysql"
     chef.add_recipe "rails_box::nginx_setting"
     chef.add_recipe "rails_box::iptables"
 
@@ -57,13 +57,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "rails_box::gemrc"
     chef.add_recipe "rails_box::pryrc"
 
-    # Install Ruby 2.2.0 and Bundler
+    # Install Ruby 2.2.1 and Bundler
     chef.json = {
+      tz: "Asia/Tokyo",
       rbenv: {
-        global: "2.2.0",
-        rubies: ["2.2.0"],
+        global: "2.2.1",
+        rubies: ["2.2.1"],
         gems: {
-          "2.2.0" => [
+          "2.2.1" => [
             { name: "bundler" },
           ]
         }
