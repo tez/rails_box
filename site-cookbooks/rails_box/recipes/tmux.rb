@@ -11,7 +11,7 @@ end
 
 template ".tmux.conf" do
   path "/home/vagrant/.tmux.conf"
-  owner "vagrant"
-  group "vagrant"
+  # owner "vagrant"
+  # group "vagrant"
   mode "0644"
 end

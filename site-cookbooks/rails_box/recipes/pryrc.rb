@@ -1,6 +1,6 @@
 template ".pryrc" do
   path "/home/vagrant/.pryrc"
-  owner "vagrant"
-  group "vagrant"
+  # owner "vagrant"
+  # group "vagrant"
   mode "0644"
 end
