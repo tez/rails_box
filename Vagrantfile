@@ -1,6 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+$script = <<SCRIPT
+sudo apt-get update
+SCRIPT
+
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
@@ -37,8 +41,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     aws.security_groups = ['default']
     # タグ
     aws.tags = {
-      name: 'web-server',
-      description: 'Ruby on RailsのWEBサーバ'
+      'Name' => 'rails-server',
+      'Description' => 'Ruby on Railsのサーバ'
     }
 
     # Amazon Linuxの場合は最初からsudoできないので指定しておく
@@ -80,6 +84,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     override.nfs.functional = false
   end
+
+  config.vm.provision "shell", inline: $script
 
   # chef のバージョンを指定
   config.omnibus.chef_version = :latest
