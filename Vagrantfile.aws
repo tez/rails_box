@@ -96,17 +96,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "xml"
     chef.add_recipe "ruby_build"
     chef.add_recipe "rbenv::system"
-    # chef.add_recipe "nginx"
+    chef.add_recipe "nginx"
     chef.add_recipe "imagemagick"
     chef.add_recipe "vim"
     chef.add_recipe "timezone"
 
-    # chef.add_recipe "rails_box::ops_user"
-    # chef.add_recipe "rails_box::keys"
+    chef.add_recipe "rails_box::ops_user"
+    chef.add_recipe "rails_box::keys"
     chef.add_recipe "rails_box::sqlite3_dev"
     # chef.add_recipe "rails_box::mysql"
-    # chef.add_recipe "rails_box::nginx_setting"
-    # chef.add_recipe "rails_box::iptables"
+    chef.add_recipe "rails_box::nginx_setting"
+    chef.add_recipe "rails_box::iptables"
 
     # For development
     chef.add_recipe "rails_box::zsh"
