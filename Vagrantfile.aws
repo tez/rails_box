@@ -1,6 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+$script = <<SCRIPT
+sudo apt-get update
+SCRIPT
+
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
@@ -37,8 +41,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     aws.security_groups = ['default']
     # タグ
     aws.tags = {
-      name: 'web-server',
-      description: 'Ruby on RailsのWEBサーバ'
+      'Name' => 'rails-server',
+      'Description' => 'Ruby on Railsのサーバ'
     }
 
     # Amazon Linuxの場合は最初からsudoできないので指定しておく
@@ -81,6 +85,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     override.nfs.functional = false
   end
 
+  config.vm.provision "shell", inline: $script
+
   # chef のバージョンを指定
   config.omnibus.chef_version = :latest
 
@@ -96,17 +102,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "xml"
     chef.add_recipe "ruby_build"
     chef.add_recipe "rbenv::system"
-    chef.add_recipe "nginx"
+    # chef.add_recipe "nginx"
     chef.add_recipe "imagemagick"
     chef.add_recipe "vim"
     chef.add_recipe "timezone"
 
-    chef.add_recipe "rails_box::ops_user"
-    chef.add_recipe "rails_box::keys"
+    # chef.add_recipe "rails_box::ops_user"
+    # chef.add_recipe "rails_box::keys"
     chef.add_recipe "rails_box::sqlite3_dev"
     # chef.add_recipe "rails_box::mysql"
-    chef.add_recipe "rails_box::nginx_setting"
-    chef.add_recipe "rails_box::iptables"
+    # chef.add_recipe "rails_box::nginx_setting"
+    # chef.add_recipe "rails_box::iptables"
 
     # For development
     chef.add_recipe "rails_box::zsh"
@@ -118,13 +124,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Install Ruby 2.2.1 and Bundler
     chef.json = {
+      rails_box: {
+        user: "ubuntu",
+        owner: "ubuntu",
+        group: "ubuntu",
+        home: "/home/ubuntu"
+      },
       tz: "Asia/Tokyo",
       rbenv: {
         global: "2.2.2",
         rubies: ["2.2.2"],
         gems: {
           "2.2.2" => [
-            { name: "bundler" },
+            { name: "bundler" }
           ]
         }
       }
