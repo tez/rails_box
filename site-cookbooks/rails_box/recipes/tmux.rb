@@ -10,8 +10,8 @@ package "tmux" do
 end
 
 template ".tmux.conf" do
-  path "/home/vagrant/.tmux.conf"
-  # owner "vagrant"
-  # group "vagrant"
+  path "#{node['rails_box']['home']}/.tmux.conf"
+  owner node['rails_box']['owner']
+  group node['rails_box']['group']
   mode "0644"
 end

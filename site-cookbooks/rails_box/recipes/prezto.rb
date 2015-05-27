@@ -8,72 +8,72 @@
 #
 bash "zprezto_install" do
   code <<-EOH
-    git clone --recursive https://github.com/sorin-ionescu/prezto.git /home/vagrant/.zprezto
+    git clone --recursive https://github.com/sorin-ionescu/prezto.git #{node['rails_box']['home']}/.zprezto
   EOH
-  # user 'vagrant'
-  # group 'vagrant'
-  not_if "test -d /home/vagrant/.zprezto"
+  user node['rails_box']['user']
+  group node['rails_box']['group']
+  not_if "test -d #{node['rails_box']['home']}/.zprezto"
 end
 
 template "zpreztorc" do
-  path "/home/vagrant/.zprezto/runcoms/zpreztorc"
-  # owner "vagrant"
-  # group "vagrant"
+  path "#{node['rails_box']['home']}/.zprezto/runcoms/zpreztorc"
+  owner node['rails_box']['owner']
+  group node['rails_box']['group']
   mode "0644"
 end
 
 template "zshrc" do
-  path "/home/vagrant/.zprezto/runcoms/zshrc"
-  # owner "vagrant"
-  # group "vagrant"
+  path "#{node['rails_box']['home']}/.zprezto/runcoms/zshrc"
+  owner node['rails_box']['owner']
+  group node['rails_box']['group']
   mode "0644"
 end
 
 template ".zshrc.local" do
-  path "/home/vagrant/.zshrc.local"
-  # owner "vagrant"
-  # group "vagrant"
+  path "#{node['rails_box']['home']}/.zshrc.local"
+  owner node['rails_box']['owner']
+  group node['rails_box']['group']
   mode "0644"
 end
 
-link "/home/vagrant/.zshenv" do
-  to "/home/vagrant/.zprezto/runcoms/zshenv"
-  # owner "vagrant"
-  # group "vagrant"
+link "#{node['rails_box']['home']}/.zshenv" do
+  to "#{node['rails_box']['home']}/.zprezto/runcoms/zshenv"
+  owner node['rails_box']['owner']
+  group node['rails_box']['group']
   mode "0644"
 end
 
-link "/home/vagrant/.zshrc" do
-  to "/home/vagrant/.zprezto/runcoms/zshrc"
-  # owner "vagrant"
-  # group "vagrant"
+link "#{node['rails_box']['home']}/.zshrc" do
+  to "#{node['rails_box']['home']}/.zprezto/runcoms/zshrc"
+  owner node['rails_box']['owner']
+  group node['rails_box']['group']
   mode "0644"
 end
 
-link "/home/vagrant/.zlogin" do
-  to "/home/vagrant/.zprezto/runcoms/zlogin"
-  # owner "vagrant"
-  # group "vagrant"
+link "#{node['rails_box']['home']}/.zlogin" do
+  to "#{node['rails_box']['home']}/.zprezto/runcoms/zlogin"
+  owner node['rails_box']['owner']
+  group node['rails_box']['group']
   mode "0644"
 end
 
-link "/home/vagrant/.zlogout" do
-  to "/home/vagrant/.zprezto/runcoms/zlogout"
-  # owner "vagrant"
-  # group "vagrant"
+link "#{node['rails_box']['home']}/.zlogout" do
+  to "#{node['rails_box']['home']}/.zprezto/runcoms/zlogout"
+  owner node['rails_box']['owner']
+  group node['rails_box']['group']
   mode "0644"
 end
 
-link "/home/vagrant/.zpreztorc" do
-  to "/home/vagrant/.zprezto/runcoms/zpreztorc"
-  # owner "vagrant"
-  # group "vagrant"
+link "#{node['rails_box']['home']}/.zpreztorc" do
+  to "#{node['rails_box']['home']}/.zprezto/runcoms/zpreztorc"
+  owner node['rails_box']['owner']
+  group node['rails_box']['group']
   mode "0644"
 end
 
-link "/home/vagrant/.zprofile" do
-  to "/home/vagrant/.zprezto/runcoms/zprofile"
-  # owner "vagrant"
-  # group "vagrant"
+link "#{node['rails_box']['home']}/.zprofile" do
+  to "#{node['rails_box']['home']}/.zprezto/runcoms/zprofile"
+  owner node['rails_box']['owner']
+  group node['rails_box']['group']
   mode "0644"
 end

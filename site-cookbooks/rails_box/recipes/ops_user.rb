@@ -14,4 +14,3 @@ user "ops" do
   shell "/bin/bash"
   password "ops"
 end
-

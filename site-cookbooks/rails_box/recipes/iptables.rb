@@ -36,4 +36,3 @@ simple_iptables_rule "http" do
          "--proto tcp --dport 443" ]
   jump "ACCEPT"
 end
-

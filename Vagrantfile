@@ -124,13 +124,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Install Ruby 2.2.1 and Bundler
     chef.json = {
+      rails_box: {
+        user: "ubuntu",
+        owner: "ubuntu",
+        group: "ubuntu",
+        home: "/home/ubuntu"
+      },
       tz: "Asia/Tokyo",
       rbenv: {
         global: "2.2.2",
         rubies: ["2.2.2"],
         gems: {
           "2.2.2" => [
-            { name: "bundler" },
+            { name: "bundler" }
           ]
         }
       }

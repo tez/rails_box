@@ -1,3 +1,5 @@
 node.default["rails_box"]["server_name"] = "vagrant.local"
-node.default["rails_box"]["owner"] = "ubuntu"
-node.default["rails_box"]["group"] = "ubuntu"
+node.default["rails_box"]["user"] = "vagrant"
+node.default["rails_box"]["owner"] = "vagrant"
+node.default["rails_box"]["group"] = "vagrant"
+node.default["rails_box"]["home"] = "/home/vagrant"
