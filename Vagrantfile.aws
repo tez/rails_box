@@ -36,7 +36,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # アベイラビリティゾーン
     aws.availability_zone = 'ap-northeast-1c'
     # 使用するAMIのID
-    aws.ami = "ami-20b6aa21"
+    aws.ami = "ami-936d9d93"
     # セキュリティグループ（複数指定でor判定）
     aws.security_groups = ['default']
     # タグ
