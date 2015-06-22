@@ -122,7 +122,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "rails_box::gemrc"
     chef.add_recipe "rails_box::pryrc"
 
-    # Install Ruby 2.2.1 and Bundler
+    # Install Ruby 2.2.2 and Bundler
     chef.json = {
       rails_box: {
         user: "ubuntu",
