@@ -1,0 +1,6 @@
+#!/bin/bash
+# pull
+PROJECT_DIR="/Users/tez/Projects/you-i-box/you-i-sys/"
+VAGRANT_DIR="/vagrant/you-i-sys/"
+HOST="52.69.70.16"
+rsync -u -r --delete --exclude='.git' -e "ssh -i $HOME/.ssh/aws_default.pem" ubuntu@$HOST:$VAGRANT_DIR $PROJECT_DIR

@@ -1,0 +1,6 @@
+#!/bin/bash
+# push
+PROJECT_DIR="/Users/tez/Projects/rails_box/app/"
+VAGRANT_DIR="/vagrant/app/"
+HOST="52.69.70.16"
+rsync -u -r --delete --exclude='.git' -e "ssh -i $HOME/.ssh/aws_default.pem" $PROJECT_DIR ubuntu@$HOST:$VAGRANT_DIR

@@ -28,10 +28,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision "shell", inline: $script
 
-  config.omnibus.chef_version = :latest
-
-  # Use Chef Solo to provision our virtual machine
-  config.vm.provision :chef_solo do |chef|
+  # Use Chef Zero to provision our virtual machine
+  config.vm.provision :chef_zero do |chef|
     chef.cookbooks_path = ["./cookbooks", "./site-cookbooks"]
     chef.add_recipe "build-essential"
     chef.add_recipe "rails_box::build-environment"
@@ -62,7 +60,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "rails_box::gemrc"
     chef.add_recipe "rails_box::pryrc"
 
-    # Install Ruby 2.2.2 and Bundler
+    # Install Ruby 2.2.3 and Bundler
     chef.json = {
       rails_box: {
         user: "vagrant",
@@ -72,10 +70,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       },
       tz: "Asia/Tokyo",
       rbenv: {
-        global: "2.2.2",
-        rubies: ["2.2.2"],
+        global: "2.2.3",
+        rubies: ["2.2.3"],
         gems: {
-          "2.2.2" => [
+          "2.2.3" => [
             { name: "bundler" }
           ]
         }

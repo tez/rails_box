@@ -10,11 +10,9 @@ This project automates the setup of a development environment for working on Rub
 
 * [VirtualBox](https://www.virtualbox.org) or [VMWare Fusion](http://www.vmware.com/products/fusion) or [Parallels Desktop](http://www.parallels.com/products/desktop/)(need Vagrant 1.5+, see [vagrant-parallels](http://parallels.github.io/vagrant-parallels/docs/installation/index.html))
 
-* [Vagrant 1.5+](http://vagrantup.com) (not a Ruby gem)
+* [Vagrant 1.7+](http://vagrantup.com) (not a Ruby gem)
 
 * Vagrant plugin [sahara](https://github.com/jedi4ever/sahara)
-
-* Vagrant plugin [vagrant-omnibus](https://github.com/schisamo/vagrant-omnibus)
 
 * Ruby Gems [Berkshelf](http://berkshelf.com/)
 
@@ -27,11 +25,11 @@ Building the virtual machine is this easy:
     host $ vagrant up --provision
     host $ vagrant ssh
     guest $ cd /vagrant
-    guest $ mv APPNAME PROJECT
-    guest $ cd PROJECT
-    
+    guest $ mv APPNAME YOUR_PROJECT
+    guest $ cd YOUR_PROJECT
+
     guest $ bundle install --path .bundle
-    guest $ bundle exec rails new . --skip-test-unit
+    guest $ bundle exec rails new .
 
 That's it.
 
@@ -59,11 +57,11 @@ Port 3000 in the host computer is forwarded to port 3000 in the virtual machine.
 
 * rbenv
 
-* Ruby 2.2.0 (binary rbenv install)
+* Ruby 2.2.3 (binary rbenv install)
 
 * Bundler
 
-* MySQL 5.6
+* Sqlite3 OR MySQL
 
 * System dependencies for nokogiri, sqlite3
 
@@ -82,4 +80,3 @@ Port 3000 in the host computer is forwarded to port 3000 in the virtual machine.
 ## License
 
 Released under the MIT License, Copyright (c) 2014 tez.
-
