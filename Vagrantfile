@@ -40,7 +40,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "xml"
     chef.add_recipe "ruby_build"
     chef.add_recipe "ruby_rbenv::system"
-    # chef.add_recipe "nginx"
+     # chef.add_recipe "nginx"
     chef.add_recipe "imagemagick"
     chef.add_recipe "vim"
     chef.add_recipe "timezone"
@@ -69,7 +69,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         home: "/home/vagrant"
       },
       tz: "Asia/Tokyo",
-      ruby_rbenv: {
+      rbenv: {
         global: "2.2.3",
         rubies: ["2.2.3"],
         gems: {

@@ -128,7 +128,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         home: "/home/ubuntu"
       },
       tz: "Asia/Tokyo",
-      ruby_rbenv: {
+      rbenv: {
         global: "2.2.3",
         rubies: ["2.2.3"],
         gems: {
