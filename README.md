@@ -61,7 +61,7 @@ Port 3000 in the host computer is forwarded to port 3000 in the virtual machine.
 
 * Bundler
 
-* Sqlite3 OR MySQL
+* Sqlite3 or MySQL
 
 * System dependencies for nokogiri, sqlite3
 
