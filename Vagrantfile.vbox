@@ -29,7 +29,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", inline: $script
 
   # Use Chef Zero to provision our virtual machine
-  config.vm.provision :chef_solo do |chef|
+  config.vm.provision :chef_zero do |chef|
     chef.cookbooks_path = ["./cookbooks", "./site-cookbooks"]
     chef.data_bags_path = "data_bags"
     chef.nodes_path = "nodes"
