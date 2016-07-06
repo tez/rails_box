@@ -19,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Configurate the virtual machine to use 512MB of RAM
   config.vm.provider "parallels" do |v|
-    v.memory = 512
+    v.memory = 1024
     v.cpus = 1
   end
 
@@ -29,8 +29,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", inline: $script
 
   # Use Chef Zero to provision our virtual machine
-  config.vm.provision :chef_zero do |chef|
+  config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ["./cookbooks", "./site-cookbooks"]
+    chef.data_bags_path = "data_bags"
+    chef.nodes_path = "nodes"
+    chef.roles_path = "roles"
+
     chef.add_recipe "build-essential"
     chef.add_recipe "rails_box::build-environment"
     chef.add_recipe "git"
@@ -40,7 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "xml"
     chef.add_recipe "ruby_build"
     chef.add_recipe "ruby_rbenv::system"
-     # chef.add_recipe "nginx"
+    # chef.add_recipe "nginx"
     chef.add_recipe "imagemagick"
     chef.add_recipe "vim"
     chef.add_recipe "timezone"
@@ -60,7 +64,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "rails_box::gemrc"
     chef.add_recipe "rails_box::pryrc"
 
-    # Install Ruby 2.2.3 and Bundler
+    # Install Ruby 2.3.1 and Bundler
     chef.json = {
       rails_box: {
         user: "vagrant",
@@ -70,10 +74,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       },
       tz: "Asia/Tokyo",
       rbenv: {
-        global: "2.2.3",
-        rubies: ["2.2.3"],
+        global: "2.3.1",
+        rubies: ["2.3.1"],
         gems: {
-          "2.2.3" => [
+          "2.3.1" => [
             { name: "bundler" }
           ]
         }
